@@ -1,0 +1,56 @@
+<ngt-group *ngIf="cubeGLTF() as cubeGLTF" [dispose]="null">
+  <ngt-mesh
+    [geometry]="cubeGLTF.nodes.cube1.geometry"
+    [position]="[-0.56, 0.38, -0.11]"
+  >
+    <ngts-mesh-transmission-material
+      [background]="background"
+      [backside]="false"
+      [samples]="10"
+      [resolution]="2048"
+      [transmission]="1"
+      [roughness]="0"
+      [thickness]="3.5"
+      [ior]="1.5"
+      [chromaticAberration]="0.06"
+      [anisotropy]="0.1"
+      [distortion]="0.0"
+      [distortionScale]="0.3"
+      [temporalDistortion]="0.5"
+      [clearcoat]="1"
+      [attenuationDistance]="0.5"
+      attenuationColor="#ffffff"
+      color="#c9ffa1"
+    />
+  </ngt-mesh>
+  <ngt-mesh
+    [castShadow]="true"
+    [renderOrder]="-100"
+    [geometry]="cubeGLTF.nodes.cube2.geometry"
+    [material]="cubeGLTF.materials.cube_mat"
+    [position]="[-0.56, 0.38, -0.11]"
+  >
+    <ngt-value [rawValue]="FrontSide" attach="material.side" />
+  </ngt-mesh>
+  <ngt-mesh
+    [geometry]="cubeGLTF.nodes.bubbles.geometry"
+    [material]="cubeGLTF.materials.cube_bubbles_mat"
+    [position]="[-0.56, 0.38, -0.11]"
+  />
+  <ngt-group [position]="[-0.56, 0.38, -0.41]">
+    <ngt-mesh
+      [geometry]="cubeGLTF.nodes.arrows.geometry"
+      [material]="cubeGLTF.materials.weapons_mat"
+    />
+    <ngt-mesh
+      [geometry]="cubeGLTF.nodes.skeleton_1.geometry"
+      [material]="cubeGLTF.materials.skele_mat"
+    />
+    <ngt-mesh
+      [geometry]="cubeGLTF.nodes.skeleton_2.geometry"
+      [material]="cubeGLTF.materials.weapons_mat"
+    >
+      <ngt-value [rawValue]="FrontSide" attach="material.side" />
+    </ngt-mesh>
+  </ngt-group>
+</ngt-group>
